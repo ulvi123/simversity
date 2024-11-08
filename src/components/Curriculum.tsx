@@ -1,4 +1,3 @@
-import React from 'react';
 import { Globe, Calendar, Users, Rocket } from 'lucide-react';
 
 const CampusCard = ({ city, country, quarter, features, description }) => (
@@ -123,4 +122,4 @@ const Curriculum = () => {
   );
 };
 
-export default Curriculum;
+export default Curriculum

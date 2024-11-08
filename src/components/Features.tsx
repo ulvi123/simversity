@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Bot, Code, Brain } from 'lucide-react';
 
 const Features = () => {
