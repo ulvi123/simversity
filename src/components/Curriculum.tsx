@@ -1,176 +1,129 @@
-import { Calendar, Users, Rocket } from 'lucide-react';
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { MapPin, Calendar, Info } from 'lucide-react';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 const Curriculum = () => {
-  // Updated state type to accept `string` or `null`.
-  const [expandedWeek, setExpandedWeek] = useState<string | null>(null);
-
-  const campuses = [
+  const curriculumData = [
     {
-      city: "Berlin",
-      country: "Germany",
-      quarter: "Q1: Feb - Apr 2024",
-      description: "Focus on business strategy, hands-on workshops, and job simulations in the heart of Europe.",
-      detailedCurriculum: [
+      location: 'Berlin, Germany',
+      quarters: [
         {
-          week: "Week 1: Business Strategy Fundamentals",
-          topics: [
-            "Introduction to Business Strategy",
-            "SWOT Analysis & Market Research",
-            "Hands-on: Developing a Company Strategy"
-          ]
-        },
-        {
-          week: "Week 2: Job Simulation Workshops",
-          topics: [
-            "Job Role Simulations in Tech Industry",
-            "Guest Speakers: Day in the Life",
-            "Hands-on: Mock Interviews"
-          ]
-        },
-        {
-          week: "Week 3: Strategic Management",
-          topics: [
-            "Understanding Competitive Advantage",
-            "Strategic Decision-Making Processes",
-            "Hands-on: Case Study of Successful Strategies"
-          ]
-        },
-        {
-          week: "Week 4: Project Workshops",
-          topics: [
-            "Practical Team-Based Projects",
-            "Problem-Solving Workshops",
-            "Hands-on: Real World Business Challenges"
-          ]
-        },
-        {
-          week: "Week 5-6: Final Strategy Presentation",
-          topics: [
-            "Preparation for Strategy Presentation",
-            "Feedback from Mentors",
-            "Presenting to an Expert Panel"
+          name: 'Quarter 1: Business & Strategy',
+          description: 'Learn core business strategies, project management, and team collaboration.',
+          weeks: [
+            {
+              title: 'Week 1: Business Strategy Fundamentals',
+              objectives: 'Understand fundamental business strategies for startups and corporations.',
+              topics: [
+                'Introduction to Business Strategy',
+                'SWOT Analysis & Market Research',
+                'Developing a Company Strategy (Hands-on)',
+              ],
+              details: 'Explore strategies and market research methods to define business objectives.'
+            },
+            {
+              title: 'Week 2: Job Simulation Workshops',
+              objectives: 'Gain hands-on experience with simulated job roles in the tech industry.',
+              topics: [
+                'Job Role Simulations',
+                'Guest Speaker: Industry Insights',
+                'Mock Interviews (Hands-on)'
+              ],
+              details: 'Participate in job role simulations to understand key industry responsibilities.'
+            }
           ]
         }
       ]
     },
     {
-      city: "Dubai",
-      country: "United Arab Emirates",
-      quarter: "Q2: May - Jul 2024",
-      description: "Learn about business and finance, with a focus on scaling and international expansion in the Middle East.",
-      detailedCurriculum: [
+      location: 'Dubai, UAE',
+      quarters: [
         {
-          week: "Week 1: Middle Eastern Market Dynamics",
-          topics: [
-            "Overview of Business in the UAE",
-            "Cultural Considerations in Business",
-            "Hands-on: Local Market Analysis"
-          ]
-        },
-        {
-          week: "Week 2: Financial Planning and Management",
-          topics: [
-            "Introduction to Financial Planning",
-            "Budgeting for Startups and Scale-Ups",
-            "Hands-on: Building a Financial Plan"
-          ]
-        },
-        {
-          week: "Week 3: Scaling Business Internationally",
-          topics: [
-            "Market Expansion Strategies",
-            "Case Studies of Successful Scale-Ups",
-            "Guest Speaker: Expansion Challenges"
-          ]
-        },
-        {
-          week: "Week 4: Venture Capital and Funding",
-          topics: [
-            "Introduction to Venture Capital",
-            "Pitching to Investors",
-            "Hands-on: Developing Your Investor Pitch"
+          name: 'Quarter 2: Finance & International Expansion',
+          description: 'Gain skills in financial planning and scaling businesses globally.',
+          weeks: [
+            {
+              title: 'Week 1: Middle Eastern Market Dynamics',
+              objectives: 'Understand market dynamics and cultural factors in the Middle East.',
+              topics: [
+                'Market Overview in the UAE',
+                'Cultural Considerations',
+                'Local Market Analysis (Hands-on)'
+              ],
+              details: 'This week focuses on understanding the unique business environment in the UAE.'
+            },
+            {
+              title: 'Week 2: Financial Planning & Management',
+              objectives: 'Develop essential financial planning skills for startups.',
+              topics: [
+                'Introduction to Financial Planning',
+                'Budgeting for Startups',
+                'Building a Financial Plan (Hands-on)'
+              ],
+              details: 'Learn budgeting and financial planning strategies for growth and scalability.'
+            }
           ]
         }
       ]
     },
     {
-      city: "San Francisco",
-      country: "United States",
-      quarter: "Q3: Aug - Oct 2024",
-      description: "Immerse yourself in the startup culture, attend career fairs, and participate in university workshops in Silicon Valley.",
-      detailedCurriculum: [
+      location: 'San Francisco, USA',
+      quarters: [
         {
-          week: "Week 1: Silicon Valley Startup Culture",
-          topics: [
-            "Introduction to Startup Ecosystem",
-            "Startup Success Stories from Silicon Valley",
-            "Hands-on: Developing Your Startup Idea"
-          ]
-        },
-        {
-          week: "Week 2: Product-Market Fit",
-          topics: [
-            "Defining Product-Market Fit",
-            "How to Test and Validate Market Fit",
-            "Hands-on: User Feedback Sessions"
-          ]
-        },
-        {
-          week: "Week 3: Career Development Fair",
-          topics: [
-            "Career Opportunities in the Tech Industry",
-            "Networking with Tech Professionals",
-            "Hands-on: Building a Personal Brand"
-          ]
-        },
-        {
-          week: "Week 4: University Collaboration Workshops",
-          topics: [
-            "Workshops with Partner Universities",
-            "Joint Projects with Students",
-            "Hands-on: Presenting Solutions to Real Problems"
+          name: 'Quarter 3: Startup Culture & Tech',
+          description: 'Immerse yourself in the startup ecosystem and learn about emerging technologies.',
+          weeks: [
+            {
+              title: 'Week 1: Silicon Valley Mindset',
+              objectives: 'Understand the culture and values of successful startups.',
+              topics: [
+                'Agile Methodologies',
+                'Rapid Prototyping',
+                'Lean Startup Principles'
+              ],
+              details: 'Explore the unique approaches and practices of Silicon Valley startups.'
+            },
+            {
+              title: 'Week 2: Emerging Tech Trends',
+              objectives: 'Stay up-to-date with the latest technological advancements.',
+              topics: [
+                'Artificial Intelligence',
+                'Blockchain Applications',
+                'Cloud Computing Innovations'
+              ],
+              details: 'Gain insights into how new technologies are shaping the future of business.'
+            }
           ]
         }
       ]
     },
     {
-      city: "Tallinn",
-      country: "Estonia",
-      quarter: "Q4: Nov - Jan 2025",
-      description: "Experience digital innovation, focus on startups, tech, and explore e-governance in Europe’s digital capital.",
-      detailedCurriculum: [
+      location: 'Tallinn, Estonia',
+      quarters: [
         {
-          week: "Week 1: Digital Transformation",
-          topics: [
-            "The Rise of Digital Societies",
-            "Estonia as a Case Study for Digital Transformation",
-            "Hands-on: Planning a Digital Initiative"
-          ]
-        },
-        {
-          week: "Week 2: Startup Culture in Estonia",
-          topics: [
-            "Introduction to the Estonian Startup Ecosystem",
-            "Success Stories from Estonian Startups",
-            "Hands-on: Developing Your Startup Pitch"
-          ]
-        },
-        {
-          week: "Week 3: E-Governance and Blockchain",
-          topics: [
-            "Introduction to E-Governance Solutions",
-            "Blockchain Use Cases in Government",
-            "Hands-on: Designing a Blockchain Solution"
-          ]
-        },
-        {
-          week: "Week 4: Tech Project Development",
-          topics: [
-            "Team-Based Tech Projects",
-            "Building MVPs and Prototypes",
-            "Presenting Projects to an Expert Panel"
+          name: 'Quarter 4: Digital Innovation & E-Governance',
+          description: 'Learn about digital transformation and e-government initiatives.',
+          weeks: [
+            {
+              title: "Week 1: Estonia's Digital Success Story",
+              objectives: "Understand the factors behind Estonia's digital leadership.",
+              topics: [
+                'E-Government Services',
+                'Digital Identity Management',
+                'Cyber Security Strategies'
+              ],
+              details: 'Explore the innovative approaches that have made Estonia a global leader in e-governance.'
+            },
+            {
+              title: 'Week 2: Designing for Digital',
+              objectives: 'Develop skills in user-centric digital product design.',
+              topics: [
+                'Design Thinking Principles',
+                'User Research and Testing',
+                'Prototyping for Digital Products'
+              ],
+              details: 'Learn how to create engaging and user-friendly digital experiences.'
+            }
           ]
         }
       ]
@@ -178,67 +131,77 @@ const Curriculum = () => {
   ];
 
   return (
-    <div className="py-20 bg-gray-50" id="curriculum">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <div className="text-blue-600 font-semibold mb-4">FULL CURRICULUM BREAKDOWN</div>
-          <h2 className="text-4xl font-bold mb-6">Your Global Learning Journey</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore what you'll learn at each of our four campuses. Each quarter is meticulously designed to cover key skills and experiences that will drive your success.
-          </p>
-        </div>
+    <div className="bg-gray-50 py-20">
+      <div className="container mx-auto px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-blue-700 mb-8"
+        >
+          Curriculum Breakdown
+        </motion.h1>
 
-        {campuses.map((campus, campusIndex) => (
-          <div key={campusIndex} className="bg-white rounded-xl p-8 shadow-lg mb-12 border border-gray-200">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {curriculumData.map((location, locationIndex) => (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              key={locationIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: locationIndex * 0.2 }}
+              className="bg-white rounded-lg shadow-lg p-8 border hover:shadow-2xl transition duration-300"
             >
-              <h3 className="text-3xl font-bold text-blue-600 mb-2">{campus.city}, {campus.country}</h3>
-              <div className="flex items-center gap-2 text-blue-500 mb-4">
-                <Calendar className="w-5 h-5" />
-                <span>{campus.quarter}</span>
+              <div className="flex items-center space-x-3 mb-4">
+                <MapPin className="text-blue-500 w-6 h-6" />
+                <h3 className="text-2xl font-bold text-blue-700">{location.location}</h3>
               </div>
-              <p className="text-gray-600 mb-8">{campus.description}</p>
 
-              <h4 className="text-2xl font-semibold text-blue-600 mb-4">Detailed Curriculum</h4>
-              <div className="space-y-6">
-                {campus.detailedCurriculum.map((weekDetail, weekIndex) => (
-                  <div key={weekIndex} className="border border-gray-300 rounded-lg p-4">
-                    <div
-                      className="flex items-center justify-between cursor-pointer"
-                      onClick={() =>
-                        setExpandedWeek(
-                          expandedWeek === `${campusIndex}-${weekIndex}`
-                            ? null
-                            : `${campusIndex}-${weekIndex}`
-                        )
-                      }
-                    >
-                      <h5 className="text-lg font-semibold text-gray-700">{weekDetail.week}</h5>
-                      <button className="text-blue-500">
-                        {expandedWeek === `${campusIndex}-${weekIndex}` ? "Hide Details" : "Show Details"}
-                      </button>
-                    </div>
-                    {expandedWeek === `${campusIndex}-${weekIndex}` && (
-                      <motion.ul
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="mt-4 pl-6 space-y-3 list-disc text-gray-600"
-                      >
-                        {weekDetail.topics.map((topic, topicIndex) => (
-                          <li key={topicIndex}>{topic}</li>
-                        ))}
-                      </motion.ul>
-                    )}
+              {location.quarters.map((quarter, quarterIndex) => (
+                <motion.div
+                  key={quarterIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: quarterIndex * 0.1 }}
+                  className="border-t border-gray-200 pt-4 mt-4"
+                >
+                  <h4 className="text-lg font-semibold text-gray-800">{quarter.name}</h4>
+                  <p className="text-gray-600 mb-4">{quarter.description}</p>
+
+                  <div className="space-y-3">
+                    {quarter.weeks.map((week, weekIndex) => (
+                      <div key={weekIndex} className="flex items-start space-x-2 text-gray-700">
+                        <Calendar className="w-5 h-5 text-blue-500 mt-1" />
+                        <div>
+                          <h5 className="font-semibold">{week.title}</h5>
+                          <p className="text-sm">{week.details}</p>
+                          <div className="flex items-center mt-2">
+                            <Tooltip.Root>
+                              <Tooltip.Trigger>
+                                <Info className="w-5 h-5 text-gray-400 hover:text-blue-500 cursor-pointer mr-2" />
+                              </Tooltip.Trigger>
+                              <Tooltip.Portal>
+                                <Tooltip.Content className="bg-gray-800 text-white p-2 rounded-lg shadow-lg text-sm">
+                                  {week.objectives}
+                                  <Tooltip.Arrow className="fill-gray-800" />
+                                </Tooltip.Content>
+                              </Tooltip.Portal>
+                            </Tooltip.Root>
+                            <span className="text-sm text-gray-600">Objectives</span>
+                          </div>
+                          <ul className="pl-6 list-disc text-gray-600 space-y-1 mt-2">
+                            {week.topics.map((topic, topicIndex) => (
+                              <li key={topicIndex}>{topic}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </motion.div>
+              ))}
             </motion.div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
