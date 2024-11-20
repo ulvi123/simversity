@@ -10,6 +10,8 @@ import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import Campuses from './pages/Campuses';
 import Programs from './components/Programs';
+import PricingMain from './pages/Pricing';
+import TechnologyPage from './pages/Technology';
 
 const App = () => {
   return (
@@ -34,6 +36,8 @@ const App = () => {
             <Route path="/campuses" element={<Campuses />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/curriculum" element={<Curriculum />} />
+            <Route path="/pricing" element={<PricingMain />} />
+            <Route path="/technology" element={<TechnologyPage />} />
           </Routes>
           <Footer />
         </div>

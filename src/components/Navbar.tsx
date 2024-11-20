@@ -26,8 +26,8 @@ const Navbar = () => {
             <Link to="/programs" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Programs</Link>
             <Link to="/curriculum" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Curriculum</Link>
             <Link to="/campuses" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Global Campuses</Link>
-            <Link to="/#technology" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Technology</Link>
-            <Link to="/#pricing" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Pricing</Link>
+            <Link to="/technology" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Technology</Link>
+            <Link to="/pricing" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Pricing</Link>
             <Link to="/#partners" onClick={handleLinkClick} className="text-gray-600 hover:text-blue-600">Partners</Link>
             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
               Apply Now
