@@ -2,22 +2,20 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, ArrowRight, Star, ChevronDown, ChevronUp } from 'lucide-react';
 
-
 interface PricingTierProps {
-    name: string;
-    price: string;
-    period: string;
-    features: string[];
-    popular: boolean;
-    cta: string;
-    highlight: boolean;
-  }
+  name: string;
+  price: string;
+  period: string;
+  features: string[];
+  popular: boolean;
+  cta: string;
+  highlight: boolean;
+}
 
 interface FAQProps {
-    question: string;
-    answer: string;
-  }
-
+  question: string;
+  answer: string;
+}
 
 const PricingTier: React.FC<PricingTierProps> = ({ name, price, period, features, popular, cta, highlight }) => (
   <motion.div
@@ -29,14 +27,21 @@ const PricingTier: React.FC<PricingTierProps> = ({ name, price, period, features
     transition={{ duration: 0.5 }}
   >
     {popular && (
-      <div className="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full flex items-center gap-1">
-        <Star className="w-4 h-4" /> Most Popular
+      <div className="absolute top-2 right-2 bg-blue-500 text-white px-3 py-[3px] rounded-full flex items-center gap-1">
+        <Star className="w-4 h-4 " /> Most Popular
       </div>
     )}
     <div className="text-center mb-8">
       <h3 className="text-2xl font-bold mb-4">{name}</h3>
-      <div className="text-4xl font-bold mb-2">{price}</div>
-      <p className="text-gray-600">{period}</p>
+      <div className="flex items-baseline justify-center">
+        <span className="text-4xl font-bold">{price}</span>
+        {price !== 'Custom' && (
+          <span className="ml-2 text-xl text-gray-600">/{period}</span>
+        )}
+      </div>
+      {price === 'Custom' && (
+        <p className="text-gray-600 mt-2">{period}</p>
+      )}
     </div>
     <ul className="space-y-4 mb-8">
       {features.map((feature, index) => (
@@ -56,7 +61,7 @@ const PricingTier: React.FC<PricingTierProps> = ({ name, price, period, features
   </motion.div>
 );
 
-const FAQItem : React.FC<FAQProps> = ({ question, answer }) => {
+const FAQItem: React.FC<FAQProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -88,57 +93,60 @@ const FAQItem : React.FC<FAQProps> = ({ question, answer }) => {
 const Pricing = () => {
   const tiers = [
     {
-      name: 'Free Trial',
-      price: '€0',
-      period: '14 days',
+      name: 'Flagship Program',
+      price: '€25,000',
+      period: 'one-time fee',
       features: [
-        'Limited course access',
-        'Community forum',
-        'Basic support',
-      ],
-      popular: false,
-      cta: 'Start Free Trial',
-      highlight: false,
-    },
-    {
-      name: 'Basic',
-      price: '€49',
-      period: 'per month',
-      features: [
-        'Full course library',
-        'Progress tracking',
-        'Certificate of completion',
-        'Email support',
-      ],
-      popular: false,
-      cta: 'Get Started',
-      highlight: false,
-    },
-    {
-      name: 'Pro',
-      price: '€99',
-      period: 'per month',
-      features: [
-        'Everything in Basic',
-        'Live Q&A sessions',
-        'Instructor-led projects',
-        'Job placement assistance',
-        '24/7 phone support',
+        'Comprehensive tech education',
+        'Industry-expert mentorship',
+        'Career transition support',
+        'Job guarantee',
+        'Lifetime alumni network access',
       ],
       popular: true,
-      cta: 'Choose Pro',
+      cta: 'Apply Now',
       highlight: true,
     },
     {
-      name: 'Enterprise',
+      name: 'LMS Basic',
+      price: '€79',
+      period: 'per month',
+      features: [
+        'Access to learning platform',
+        'Self-paced courses',
+        'Community forum access',
+        'Basic progress tracking',
+        'Email support',
+      ],
+      popular: false,
+      cta: 'Start Learning',
+      highlight: false,
+    },
+    {
+      name: 'LMS Pro',
+      price: '€149',
+      period: 'per month',
+      features: [
+        'Everything in LMS Basic',
+        'Advanced courses and specializations',
+        'Live webinars with industry experts',
+        'Career services access',
+        'Priority support',
+      ],
+      popular: false,
+      cta: 'Upgrade Your Learning',
+      highlight: false,
+    },
+    {
+      name: 'Enterprise LMS',
       price: 'Custom',
       period: 'Tailored solutions',
       features: [
-        'Custom curriculum',
+        'Custom course development',
         'Dedicated account manager',
-        'On-site training options',
-        'API access',
-        'Advanced analytics',
+        'Employee progress analytics',
+        'Bulk enrollment discounts',
+        'Integration with internal systems',
       ],
       popular: false,
       cta: 'Contact Sales',
