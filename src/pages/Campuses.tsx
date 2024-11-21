@@ -2,10 +2,11 @@ import { Globe, Calendar, Users, Rocket, ArrowRight, Target, Database, LineChart
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-import Berlin from "../assets/berlin.jpg"
-import Tallinn from '../assets/Tallinn.jpg'
-import Dubai from '../assets/dubai.jpg'
-import SF from '../assets/SF.jpg'
+
+import Berlin from '../assets/berlin.jpg';
+import Tallinn from '../assets/Tallinn.jpg';
+import Dubai from '../assets/dubai.jpg';
+import SF from '../assets/SF.jpg';
 
 
 const campuses = [
